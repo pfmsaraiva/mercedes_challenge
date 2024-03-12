@@ -4,6 +4,6 @@
   },
   "scripts": {
     "cypress:open": "cypress open",
-    "build": "react-scripts build"
+    "build": "cypress build"
   }
 }
