@@ -26,8 +26,9 @@ jobs:
       # and run all Cypress tests
     - name: Cypress run
       uses: cypress-io/github-action@v2
-      env:
-        DEBUG: 'cypress:*'
+      # Disabling debug mode
+      #env:
+      #  DEBUG: 'cypress:*'
      # with:
      #   build: npm run build
      #   start: npm start
