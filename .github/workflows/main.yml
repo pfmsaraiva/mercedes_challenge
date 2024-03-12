@@ -28,7 +28,7 @@ jobs:
       uses: cypress-io/github-action@v2
       env:
         DEBUG: 'cypress:*'
-      with:
-        build: npm run build
-        start: npm start
-        browser: chrome
+     # with:
+     #   build: npm run build
+     #   start: npm start
+     #   browser: chrome
