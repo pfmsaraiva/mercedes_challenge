@@ -36,9 +36,9 @@ jobs:
     - name: Run Cypress Test on Firefox
       uses: cypress-io/github-action@v5
       with:
-        command: npm run test:firefox
+        browser: firefox
     - name: Run Cypress Test on Chrome
       uses: cypress-io/github-action@v5
       with:
-        command: npm run test:chrome
+        browser: chrome
  
