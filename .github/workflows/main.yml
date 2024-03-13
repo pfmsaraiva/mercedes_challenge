@@ -33,3 +33,12 @@ jobs:
      #   build: npm run build
      #   start: npm start
      #   browser: chrome
+    - name: Run Cypress Test on Firefox
+      uses: cypress-io/github-action@v5
+      with:
+        command: npm run test:firefox
+    - name: Run Cypress Test on Chrome
+      uses: cypress-io/github-action@v5
+      with:
+        command: npm run test:chrome
+ 
