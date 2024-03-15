@@ -34,10 +34,7 @@ describe('Enquiring', () => {
     // Visit Mercedes-Benz Shop Australia
     cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
     // Accept cookies
-    cy.wait('[class=cmm-cookie-banner__content]');
-
-    cy.get('[class=cmm-cookie-banner__content]').should('be.visible');
-
+    cy.get('[class=cmm-cookie-banner__content]', { timeout: 30000 }).should('be.visible');
 
   })
 
