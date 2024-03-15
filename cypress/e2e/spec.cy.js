@@ -37,24 +37,9 @@ describe('Enquiring', () => {
     cy.get("class=cmm-cookie-banner__content").should('be.visible');
 
   })
+
   it('Validate the negative path of the highest price', () => {
   //Visit Mercedes-Benz Shop Australia
     cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
-  })
-
-
-/* describe('Open Google Test', () => {
-  it('Visit Mercedes-Benz Shop Australia', () => {
-  //Visit Mercedes-Benz Shop Australia
-  cy.visit("https://www.google.com/");
-  // Reject Cookies
-  cy.get('button[id="W0wltc"]').click();
-  //Click Searchbox
-  cy.get('textarea[name="q"]').click();
-  //Write something
-  cy.get('textarea[name="q"]').type('Something funny');
-  //Search
-  cy.get('input[name="btnK"]').eq(0).click();
-  //Confirm that page has something on the results
+  }) 
 })
-}) */
