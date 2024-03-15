@@ -114,7 +114,7 @@ describe('Enquiring', () => {
     cy.get('.check-boxes').should('be.visible').contains('Customer');
     cy.get('.check-boxes').should('be.visible').contains('Customer');
   
-  //Click Proceed 
+  //Click Proceed  
     cy.get('[type="radio"]').click();
   
   //Validate the error message
