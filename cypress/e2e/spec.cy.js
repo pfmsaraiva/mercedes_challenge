@@ -34,56 +34,69 @@ describe('Enquiring', () => {
     // Visit Mercedes-Benz Shop Australia
     cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
     // Accept cookies 
-    cy.get('[data-test="handle-accept-all-button"]', { timeout: 50000 } ).first().click();
+    cy.get('[data-test="handle-accept-all-button"]', { timeout: 120000 } ).first().click();
   })
 
   it('Validate the negative path of the highest price', () => {
   //Validate that the location form appears
-  
+    cy.get('[data-test-id="modal-popup__location"]').should('exist');
   //Validate that the Continue button is disabled before the info is inserted
-  
+    cy.get('[data-test-id="state-selected-modal__close"]').should('be.disabled');
   //Validate that the list of states has all of them
-
+  //tofix
+  //cy.get('select').find('option').should('have.length', 9);
   //Add and validate that the State appears (e.g. 'New South Wales')
-  
-  
+    cy.get('select').first().select("New South Wales").invoke("val").should("eq", "New South Wales");
+    cy.get("select option:selected").contains( "New South Wales");
   //Add and validate that the Postal Code appears (e.g. '2007')
-  
+    cy.get('[aria-labelledby="postal-code-hint"]').type('2007');
+  //tofix
+  //cy.get('[aria-labelledby="postal-code-hint"]').contains('2007');
   //Set the Purpose to Private and validate that is selected
-
+    cy.get('[value="P"]').check({ force: true});
   //Validate that the Continue button is enabled after the info is inserted
-  
+    cy.get('[value="P"]').check({ force: true}).should('be.checked');
   //Press Continue to submit the information
-
+    cy.get('[data-test-id="state-selected-modal__close"]').click();
   //Validate that the State inserted appears on the site location on top
-
+    cy.get('.dcp-header-location-link').contains('New South Wales');
   //Press the Filter button
-
+    cy.get('.filter-toggle').click();    
   //Filter by pre-owned
-
+    cy.contains('button', ' Pre-Owned').click();
   //Filter by color 
   //Brilliant Blue Metallic was the first color that had mor than one vehicle available
-
+    cy.get('.filter-toggle', { timeout: 120000 } ).click();  
+    cy.contains('p', 'Colour').click();
+    cy.get('[data-test-id="multi-select-dropdown-card-opener"]').filter(':visible').click();
+    cy.contains('li', ' Brilliant Blue Metallic ');
   //Validate that the number of results matches the number of actual results
 
   //Navigate and enter the Vehicle details of the most expensive car on the filtered list
   //Here will be checked the most expensive car, other way was to filter from the highest to lowest price
 
   //Validate that the price clicked is presented on the Vehicle page
-
+    cy.get('.YOUR_BUTTON_CLASS').contains('Customer');
+  //  cy.get('.YOUR_BUTTON_CLASS').contains('Customer');
   //Save some vehicle details to a file (VIN number, Model Year)
-
+    cy.get('app-screen').find('input[id="studentName"]').invoke('val').as('VINnumber');
+    cy.get('app-screen').find('input[id="studentName"]').invoke('val').as('ModelYear');
+    
+    //cy.writeFile('path/to/data.json', { VINnumber,ModelYear })
   //Click Enquire Now
-
+    cy.get('[type="radio"]').click();
   //Fill the “Contact Details and Account Creation” form with invalid data. 
-
+    cy.get('input').type('Hello, World');
+    cy.get('input').type('Hello, World');
+    cy.get('input').type('Hello, World');
   //Validate that the error messages appears on email, phone number and post code
-
+    cy.get('.check-boxes').should('be.visible').contains('Customer');
+    cy.get('.check-boxes').should('be.visible').contains('Customer');
+    cy.get('.check-boxes').should('be.visible').contains('Customer');
   //Click Proceed 
-  
+    cy.get('[type="radio"]').click();
   //Validate the error message
-
-
+    cy.get('.check-boxes').should('be.visible').contains('Customer');
   //Visit Mercedes-Benz Shop Australia
     cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
   }) 
