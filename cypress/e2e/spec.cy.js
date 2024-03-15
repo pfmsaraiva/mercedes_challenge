@@ -9,13 +9,13 @@ describe('Open Google Test', () => {
   //Visit the Demo QA Website
   cy.visit("https://www.google.com/");
   // Reject Cookies
-  //cy.get('button[id="W0wltc"]').click();
+  cy.get('button[id="W0wltc"]').click();
   //Click Searchbox
-  //cy.get('textarea[name="q"]').click();
+  cy.get('textarea[name="q"]').click();
   //Write something
-  //cy.get('textarea[name="q"]').type('Something funny');
+  cy.get('textarea[name="q"]').type('Something funny');
   //Search
-  //cy.get('input[type="Submit"]').click();
+  cy.get('input[name="btnK"]').eq(0).click();
   //Confirm that page has something on the results
 })
 })
