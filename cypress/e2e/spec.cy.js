@@ -38,6 +38,52 @@ describe('Enquiring', () => {
   })
 
   it('Validate the negative path of the highest price', () => {
+  //Validate that the location form appears
+  
+  //Validate that the Continue button is disabled before the info is inserted
+  
+  //Validate that the list of states has all of them
+
+  //Add and validate that the State appears (e.g. 'New South Wales')
+  
+  
+  //Add and validate that the Postal Code appears (e.g. '2007')
+  
+  //Set the Purpose to Private and validate that is selected
+
+  //Validate that the Continue button is enabled after the info is inserted
+  
+  //Press Continue to submit the information
+
+  //Validate that the State inserted appears on the site location on top
+
+  //Press the Filter button
+
+  //Filter by pre-owned
+
+  //Filter by color 
+  //Brilliant Blue Metallic was the first color that had mor than one vehicle available
+
+  //Validate that the number of results matches the number of actual results
+
+  //Navigate and enter the Vehicle details of the most expensive car on the filtered list
+  //Here will be checked the most expensive car, other way was to filter from the highest to lowest price
+
+  //Validate that the price clicked is presented on the Vehicle page
+
+  //Save some vehicle details to a file (VIN number, Model Year)
+
+  //Click Enquire Now
+
+  //Fill the “Contact Details and Account Creation” form with invalid data. 
+
+  //Validate that the error messages appears on email, phone number and post code
+
+  //Click Proceed 
+  
+  //Validate the error message
+
+
   //Visit Mercedes-Benz Shop Australia
     cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
   }) 
