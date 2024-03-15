@@ -27,6 +27,11 @@ Mandatory steps:
 */
 
 describe('Enquiring', () => {
+  before(() => {
+    //Disabling some logs
+    cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
+  });
+
   beforeEach(() => {
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
@@ -70,23 +75,23 @@ describe('Enquiring', () => {
     cy.get('.dcp-header-location-link').contains('New South Wales');
   
   //Press the Filter button
-    cy.get('.filter-toggle').click();    
+    cy.get('.filter-toggle', { timeout: 120000 }).click();    
   
   //Filter by pre-owned
     cy.contains('button', ' Pre-Owned').click();
   
   //Filter by color 
   //Brilliant Blue Metallic was the first color that had mor than one vehicle available
-    cy.get('.filter-toggle', { timeout: 120000 } ).click();  
+    cy.get('.filter-toggle', { timeout: 120000 } ).click({force: true} );  
     cy.contains('p', 'Colour').click();
     cy.get('[data-test-id="multi-select-dropdown-card-opener"]').filter(':visible').click();
-    cy.contains('li', ' Brilliant Blue Metallic ');
+    cy.contains('li', ' Brilliant Blue Metallic ').click;
   
   //Navigate and enter the Vehicle details of the most expensive car on the filtered list
   //Here will be checked the most expensive car, other way was to filter from the highest to lowest price
 
   //Validate that the price clicked is presented on the Vehicle page
-    cy.get('[data-test-id="dcp-cars-product-tile-price"]').contains(' A$94,990.00 ').click;
+    cy.get('[data-test-id="dcp-cars-product-tile-price"]', { timeout: 120000 }).contains(' A$94,990.00 ').click;
   //  cy.get('.YOUR_BUTTON_CLASS').contains('Customer');
   
   //Save some vehicle details to a file (VIN number, Model Year)
@@ -110,15 +115,17 @@ describe('Enquiring', () => {
     cy.get('[data-test-id="rfq-contact__postal-code"]').type('2024');
   
   //Validate that the error messages appears on email, phone number and post code
-    cy.get('.check-boxes').should('be.visible').contains('Customer');
-    cy.get('.check-boxes').should('be.visible').contains('Customer');
-    cy.get('.check-boxes').should('be.visible').contains('Customer');
+
+    cy.get('[data-test-id="rfq-contact__last-name"]').click();
+    cy.get('[data-test-id="9rblhlohv__default-input"]').should('be.visible');
+    cy.get('[data-test-id="b8uqvvwr6__default-input"]').should('be.visible');
+    cy.get('[data-test-id="uorw1ki06__default-input"]').should('be.visible');
   
   //Click Proceed  
-    cy.get('[type="radio"]').click();
+    cy.get('[data-test-id="dcp-rfq-contact-button-container__button-next"]').click();
   
   //Validate the error message
-    cy.get('.check-boxes').should('be.visible').contains('Customer');
+    cy.get('.dcp-error-message__error-hint').should('be.visible').contains('An error has occurred');
   
   }) 
 })
