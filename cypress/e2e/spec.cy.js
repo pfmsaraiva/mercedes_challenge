@@ -100,12 +100,14 @@ describe('Enquiring', () => {
     //cy.writeFile('path/to/data.json', { VINnumber,ModelYear })
   
   //Click Enquire Now
-    cy.get('[type="radio"]').click();
+    cy.contains('a', ' Enquire Now ').click();
   
   //Fill the “Contact Details and Account Creation” form with invalid data. 
-    cy.get('input').type('Hello, World');
-    cy.get('input').type('Hello, World');
-    cy.get('input').type('Hello, World');
+    cy.contains('label', ' First Name ').type('Thomas');
+    cy.get('[data-test-id="rfq-contact__last-name"]').type('Anderson');
+    cy.get('[data-test-id="rfq-contact__email"]').type('followthewhiterabbit@');
+    cy.get('[data-test-id="rfq-contact__phone"]').type('0001');
+    cy.get('[data-test-id="rfq-contact__postal-code"]').type('2024');
   
   //Validate that the error messages appears on email, phone number and post code
     cy.get('.check-boxes').should('be.visible').contains('Customer');
