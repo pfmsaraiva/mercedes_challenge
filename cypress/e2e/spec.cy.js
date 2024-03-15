@@ -26,13 +26,22 @@ Mandatory steps:
 
 */
 
-
 describe('Enquiring', () => {
+  beforeEach(() => {
+    // Since we want to visit the same URL at the start of all our tests,
+    // we include it in our beforeEach function so that it runs before each test
+    
+    // Visit Mercedes-Benz Shop Australia
+    cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
+    // Accept cookies
+    cy.get("class=cmm-cookie-banner__content").should('be.visible');
+
+  })
   it('Validate the negative path of the highest price', () => {
   //Visit Mercedes-Benz Shop Australia
-  cy.visit("https://www.google.com/");
+    cy.visit("https://shop.mercedes-benz.com/en-au/shop/vehicle/srp/demo");
   })
-})
+
 
 /* describe('Open Google Test', () => {
   it('Visit Mercedes-Benz Shop Australia', () => {

@@ -14,11 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    #strategy:
-     # matrix:
-      #  node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -26,13 +21,6 @@ jobs:
       # and run all Cypress tests
     - name: Cypress run
       uses: cypress-io/github-action@v5
-      # Disabling debug mode
-      #env:
-      #  DEBUG: 'cypress:*'
-     # with:
-     #   build: npm run build
-     #   start: npm start
-     #   browser: chrome
     - name: Run Cypress Test on Firefox
       uses: cypress-io/github-action@v5
       with:
