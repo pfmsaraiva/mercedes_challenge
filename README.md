@@ -7,8 +7,8 @@ Welcome to the Cypress project! This repository contains end-to-end tests writte
 Before you can run the tests locally, ensure you have the following installed:
 
 - VSCode
-- Node.js (v14.x or higher)
-- npm (v6.x or higher)
+- Node.js
+- npm 
 
 ## Installation
 
@@ -26,4 +26,4 @@ npm run cypress:open
 
 6. Press Start E2E Testing
 
-7. An automated Chrome page will open and choose the spec you want to run
+7. An automated Chrome page will open and choose the TASK2 file you want to run
