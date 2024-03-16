@@ -89,9 +89,19 @@ describe('Enquiring', () => {
   
   //Navigate and enter the Vehicle details of the most expensive car on the filtered list
   //Here will be checked the most expensive car, other way was to filter from the highest to lowest price
+    cy.get('[data-test-id="dcp-cars-product-tile-price"]').then(($prices) => {
+    // Extract text containing prices and split into an array
+      const pricesText = $prices.text().split('\n');
 
+    // Convert prices to numbers
+      const prices = pricesText.map(price => parseFloat(price.replace('A$', '')));
+
+    // Find the highest price
+      const highestPrice = Math.max(...prices);
+
+  });
   //Validate that the price clicked is presented on the Vehicle page
-    cy.get('[data-test-id="dcp-cars-product-tile-price"]', { timeout: 120000 }).contains(' A$94,990.00 ').click;
+    cy.get('[data-test-id="dcp-cars-product-tile-price"]', { timeout: 120000 }).contains(highestPrice).click;
   //  cy.get('.YOUR_BUTTON_CLASS').contains('Customer');
   
   //Save some vehicle details to a file (VIN number, Model Year)
